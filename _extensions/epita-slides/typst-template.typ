@@ -313,7 +313,7 @@
       }
       #if affiliations != none {
         set text(fill: black.lighten(40%))
-        affiliations.join([ \ ])
+        affiliations.enumerate().map(it => [#super([#{it.at(0) + 1}])#it.at(1)]).join([ \ ])
       }
     ]
   }
