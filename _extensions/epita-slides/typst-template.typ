@@ -70,7 +70,7 @@
   abstract: none,
   abstract-title: none,
   cols: 1,
-  margin: 1.5cm,
+  margin: (x: 1.5cm, top: 2cm, bottom: 1.5cm),
   paper: "16:9",
   lang: "fr",
   region: "FR",
@@ -109,7 +109,7 @@
   let fill-color = dark-blue.lighten(40%)
 
   // Styles
-  let heading-style = (weight: "semibold", fill: pink, font: "Chakra Petch")
+  let heading-style = (weight: "semibold", fill: dark-blue, font: "Chakra Petch")
 
   // Setup
   set document(
@@ -125,7 +125,7 @@
     let heading = headings.rev().find(x => x.location().page() <= page)
 
     if heading != none {
-      set text(1.4em, ..heading-style)
+      set text(1.4em, ..heading-style, fill: pink)
       if not heading.location().page() == page {
         block(heading.body + numbering("(i)", page - heading.location().page() + 1))
       } else if heading.location().page() == page {
@@ -166,6 +166,7 @@
   set page(
     width: width,
     height: height,
+    header-ascent: 40%,
     margin: margin,
     header: header,
     footer: footer,
@@ -176,7 +177,11 @@
   // SLIDES STYLING--------------------------------------------------
   // Section Slides
   set heading(numbering: sectionnumbering)
-  show heading: set text(..heading-style)
+  show heading: (it) => {
+    set text(..heading-style)
+    set block(inset: (top: .5em))
+    it
+  }
   show heading.where(level: 1): (it) => {
     set page(header: none, footer: none, margin: 0cm)
     set align(horizon)
@@ -323,6 +328,9 @@
   if (toc == true) {
     outline(depth: toc_depth, title: toc_title)
   }
+
+  set par(leading: 1.2em)
+
   // Normal Content
   doc
   
