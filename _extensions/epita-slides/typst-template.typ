@@ -329,7 +329,7 @@
     outline(depth: toc_depth, title: toc_title)
   }
 
-  set par(leading: 1.2em)
+  set par(leading: 1em)
 
   // Normal Content
   doc
