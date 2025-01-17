@@ -1,6 +1,6 @@
 title: epita-slides
 author: Loïc R
-version: 1.0.0
+version: 1.0.1
 quarto-required: ">=1.6.0"
 contributes:
   formats:
