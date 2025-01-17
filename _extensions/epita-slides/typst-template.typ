@@ -350,7 +350,7 @@
     )[
       #set text(weight: "regular")
       #set par(leading: .75em)
-      #text(fill: icon_color, [#icon #strong(title)])\ #v(-.25em)
+      #text(fill: icon_color, [#icon #h(.25em) #strong(title)])\ #v(-.25em)
       #body
       #v(.15em)
     ]
