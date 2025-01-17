@@ -1,0 +1,10 @@
+---
+title: TAGADA
+subtitle: An automated tool for (differential) cryptanalysis
+author: Loïc Rouquette
+date: last-modified
+toc: true
+format:
+  epita-slides-typst: default
+---
+
