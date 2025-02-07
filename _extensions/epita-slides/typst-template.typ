@@ -103,13 +103,14 @@
   // Colors
   let dark-blue = rgb("#112d69")
   let pink = rgb("#b80e80")
+  let light-blue = rgb("#06ace8")
   let block-color = dark-blue.lighten(90%)
   let body-color = dark-blue.lighten(80%)
   let header-color = dark-blue.lighten(60%)
   let fill-color = dark-blue.lighten(40%)
 
   // Styles
-  let heading-style = (weight: "semibold", fill: dark-blue, font: "Chakra Petch")
+  let heading-style = (weight: "semibold", font: "Chakra Petch")
 
   // Setup
   set document(
@@ -117,7 +118,7 @@
     author: authors.map(it => to-string(it.name)).join(", ", last: " and "),
   )
   set heading(numbering: none)
-  set text(font: font, lang: lang)
+  set text(font: font, lang: lang, fill: dark-blue)
 
   let header = context {  
     let page = here().page()
@@ -125,7 +126,7 @@
     let heading = headings.rev().find(x => x.location().page() <= page)
 
     if heading != none {
-      set text(1.4em, ..heading-style, fill: pink)
+      set text(1.4em, ..heading-style, fill: dark-blue)
       if not heading.location().page() == page {
         block(heading.body + numbering("(i)", page - heading.location().page() + 1))
       } else if heading.location().page() == page {
@@ -203,7 +204,8 @@
     )
   }
   show heading.where(level: 2): pagebreak(weak: true) // this is where the magic happens
-  show heading: set text(..heading-style, size: 1.1em, fill: dark-blue)
+  show heading.where(level: 3): set text(..heading-style, size: 1.2em, fill: pink)
+  show heading.where(level: 4): set text(..heading-style, size: 1.1em)
 
   // ADD. STYLING --------------------------------------------------
   // Terms
@@ -339,11 +341,12 @@
 #let callout(body: [], title: "Callout", background_color: rgb("#dddddd"), icon: none, icon_color: black) = block(breakable: false,
   table(
     stroke: none,
-    columns: (auto, 1fr),
+    columns: (auto, auto, 1fr),
     align: horizon,
-    fill: (x, y) => if x == 0 { icon_color } else { none },
+    fill: (x, y) => if x == 1 { icon_color } else { none },
     inset: 0em,
-    block(width: .2em),
+    block(width: 3.5pt),
+    block(width: 3pt),
     block(
       width: 100%,
       inset: (x: 1em, y: .75em),
