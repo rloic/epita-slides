@@ -242,9 +242,7 @@
       top: if y == 0 {0.8pt + black} else if y==1 {0.4pt + black} else { 0pt },
     )
   )
-  
-  show table.cell.where(y: 0): set text(
-    style: "normal", weight: "bold") // for first / header row
+  show table.cell.where(y: 0): set text(style: "normal", weight: "bold") // for first / header row
 
   set table.hline(stroke: 0.4pt+black)
   set table.vline(stroke: 0.4pt)
@@ -278,6 +276,9 @@
 
   // To not make the TOC heading a section slide by itself
   show outline: set heading(level: 2) 
+
+  // Image
+  set image(fit: "contain")
 
   // Bibliography
   set bibliography(
